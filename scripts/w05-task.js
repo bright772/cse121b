@@ -74,7 +74,20 @@ function filterTemples(arrayOfTemples) {
             break;
         case "all":
             displayTemples(arrayOfTemples);
-        default:
+            break;
+        case "alphabetic":
+            // Make a copy so they can go back to normal in the "all" case.
+            // A shallow copy is good enough for this.
+            arrayCopy = arrayOfTemples.slice();
+            displayTemples(arrayCopy.sort((firstTemple, secondTemple) => {
+                if (firstTemple.templeName < secondTemple.templeName) {
+                    return -1;
+                }
+                if (firstTemple.templeName > secondTemple.templeName) {
+                    return 1;
+                }
+                return 0;
+                }));
             break;
     }
 }
@@ -86,7 +99,7 @@ const globalFilterElement = document.querySelector("#filtered");
 globalFilterElement.addEventListener("change", ( () => { filterTemples(templeList) } ) );
 
 /* Add more functionality */
-const newOptionElement = globalFilterElement.createElement("option");
+const newOptionElement = document.createElement("option");
 newOptionElement.setAttribute("value", "alphabetic");
-newOptionElement.innerText = "Sort alphabetically";
+newOptionElement.textContent = "Sort Alphabetically";
 globalFilterElement.appendChild(newOptionElement);
