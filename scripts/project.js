@@ -8,12 +8,16 @@ async function getHanjaFromHangeul(hangeulSyllable) {
         let urlVariable = `https://en.wiktionary.org/w/api.php?action=query&format=json&prop=revisions&titles=${encodedHangeul}&rvprop=content&rvslots=*`;
         // urlVariable = "https://en.wiktionary.org/w/api.php?action=query&format=json&prop=revisions&titles=%EA%B3%BC&rvprop=content&rvslots=*"; // using e.g. "gwa" 과
 
-// As of 2025/07/03, CORS no longer interferes with the API call.  Remove the below:
-//        // Without encoding, the address isn't found by corsproxy.org.  Encoded, it would look like this:
-//        // urlVariable = "https%3A%2F%2Fen.wiktionary.org%2Fw%2Fapi.php%3Faction%3Dquery%26format%3Djson%26prop%3Drevisions%26titles%3D%EA%B3%BC%26rvprop%3Dcontent";
+        // Without encoding, the address isn't found by corsproxy.org.  Encoded, it would look like this:
+        // urlVariable = "https%3A%2F%2Fen.wiktionary.org%2Fw%2Fapi.php%3Faction%3Dquery%26format%3Djson%26prop%3Drevisions%26titles%3D%EA%B3%BC%26rvprop%3Dcontent";
 
-//        // Use a third-party CORS (Cross-Origin Resource Sharing) proxy service.
-//        urlVariable = "https://corsproxy.org/?" + encodeURIComponent(urlVariable);
+        // Use a third-party CORS (Cross-Origin Resource Sharing) proxy service.
+        // urlVariable = "https://corsproxy.org/?" + encodeURIComponent(urlVariable);
+        // Or try:
+        urlVariable = "https://cors-anywhere.herokuapp.com/" + encodeURIComponent(urlVariable);
+        // urlVariable = "https://api.allorigins.win/raw?url=" + encodeURIComponent(urlVariable);
+
+
 
         // Get response.
         // Response is only the response headers: type (cors), url, redirected (true/false), status (200/400), ok (true/false)
