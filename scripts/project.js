@@ -12,9 +12,9 @@ async function getHanjaFromHangeul(hangeulSyllable) {
         // urlVariable = "https%3A%2F%2Fen.wiktionary.org%2Fw%2Fapi.php%3Faction%3Dquery%26format%3Djson%26prop%3Drevisions%26titles%3D%EA%B3%BC%26rvprop%3Dcontent";
 
         // Use a third-party CORS (Cross-Origin Resource Sharing) proxy service.
-        // urlVariable = "https://corsproxy.org/?" + encodeURIComponent(urlVariable);
+        urlVariable = "http://corsproxy.org/?" + encodeURIComponent(urlVariable);
         // Or try:
-        urlVariable = "https://cors-anywhere.herokuapp.com/" + encodeURIComponent(urlVariable);
+        // urlVariable = "https://cors-anywhere.herokuapp.com/" + encodeURIComponent(urlVariable); // this is temporary
         // urlVariable = "https://api.allorigins.win/raw?url=" + encodeURIComponent(urlVariable);
 
 
