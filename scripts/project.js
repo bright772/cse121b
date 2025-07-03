@@ -57,7 +57,12 @@ function extractHanja(responseJsonDataText, hanjaObj) {
             const koEtymSinoIndex = responseJsonDataText.indexOf("{{ko-etym-sino|", etymologyIndex);
             if (koEtymSinoIndex !== -1) {
                 // Get any single character after "{{ko-etym-sino|".
-                const hanja = responseJsonDataText[koEtymSinoIndex + 15]; // (The length of "{{ko-etym-sino|".)
+                // const hanja = responseJsonDataText[koEtymSinoIndex + 15]; // (The length of "{{ko-etym-sino|".)
+                const hanjaHex = responseJsonDataText.substr(koEtymSinoIndex + 17, 4); // (The length of "{{ko-etym-sino|/u".)
+                // Convert to character.
+                const hanjaCodePoint = parseInt(hanjaHex, 16);
+                const hanja = String.fromCharCode(codePoint);
+
                 let meaning;
 
                 const nounIndex = responseJsonDataText.indexOf("====Noun====", koEtymSinoIndex);
