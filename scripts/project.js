@@ -15,9 +15,8 @@ async function getHanjaFromHangeul(hangeulSyllable) {
         // urlVariable = "http://corsproxy.org/?" + encodeURIComponent(urlVariable);
         // Or try:
         // urlVariable = "https://cors-anywhere.herokuapp.com/" + encodeURIComponent(urlVariable); // this is temporary
-        urlVariable = "https://api.allorigins.win/raw?url=" + encodeURIComponent(urlVariable);
-
-
+        // urlVariable = "https://api.allorigins.win/raw?url=" + encodeURIComponent(urlVariable); // doesn't work
+        urlVariable = "https://corsproxy.io/?url=" + encodeURIComponent(urlVariable);
 
         // Get response.
         // Response is only the response headers: type (cors), url, redirected (true/false), status (200/400), ok (true/false)
